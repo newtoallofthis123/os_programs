@@ -27,20 +27,16 @@ int main() {
 }
 
 void *philosopher(void *num) {
-  int phil = *(int *)num;
-
-  sem_wait(&room);
-  printf("\nPhilosopher %d has entered room", phil);
-  sem_wait(&chopstick[phil]);
-  sem_wait(&chopstick[(phil + 1) % 5]);
-
-  eat(phil);
-  sleep(2);
-  printf("\nPhilosopher %d has finished eating", phil);
-
-  sem_post(&chopstick[(phil + 1) % 5]);
-  sem_post(&chopstick[phil]);
-  sem_post(&room);
+    int phil = (*(int *)num);
+    sem_wait(&room);
+    sem_wait(&chopstick[phil]);
+    sem_wait(&chopstick[(phil + 1) % 5]);
+    eat(phil);
+    sleep(2);
+    printf("\nPhilosopher %d has finished eating", phil);
+    sem_post(&chopstick[(phil + 1) % 5]);
+    sem_post(&chopstick[phil]);
+    sem_post(&room);
 }
 
 void eat(int phil) { printf("\nPhilosopher %d is eating", phil); }

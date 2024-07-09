@@ -17,6 +17,6 @@ int main(){
     scanf("%d", &la);
     pn = la/ps;
     index = la%ps;
-    pa = pt[pn]+ps + index;
+    pa = pt[pn]*ps + index;
     printf("The physical address is: %d\n", pa);
 }

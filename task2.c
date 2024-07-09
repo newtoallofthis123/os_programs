@@ -3,7 +3,7 @@
 
 int main(){
     int fd1, fd2;
-    char buf[1024];
+    char *buf;
     fd1 = open("file1.txt", O_RDONLY);
     fd2 = open("file2.txt", O_WRONLY | O_CREAT, 0644);
 

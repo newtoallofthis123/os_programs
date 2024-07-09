@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <semaphore.h>
 
-// reader and writer problem
 sem_t mutex, wrt;
-int data = 0, rcount = 0;
+int rcount, data;
 
 void reader(int f){
     sem_wait(&mutex);
@@ -22,7 +21,7 @@ void reader(int f){
 void writer(int f){
     sem_wait(&wrt);
     data++;
-    printf("Data written by the writer %d is %d\n", f, data);
+    printf("Data writen by the writer %d is %d\n", f, data);
     sem_post(&wrt);
 }
 
